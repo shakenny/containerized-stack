@@ -1,0 +1,89 @@
+networks:
+  dev_network:
+    driver: bridge
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - 5080:80
+      - 5443:443
+      - 5300:5300
+      - 5301:5301
+      - 5302:5302
+      - 5303:5303
+      - 5304:5304
+      - 5305:5305
+      - 5306:5306
+      - 5307:5307
+      - 5308:5308
+      - 5309:5309
+      - 5310:5310
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+      - ./html:/var/www/html
+    networks:
+      - dev_network
+
+  php:
+    image: php:8.2-fpm
+    container_name: php
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+    networks:
+      - dev_network
+
+  mysql:
+    image: mysql:8.0.23
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d/
+      - ./mysql/log:/var/log/mysql
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_USER=kennyyang
+      - MYSQL_PASSWORD="!Ybw324!"
+    networks:
+      - dev_network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    environment:
+      - REDIS_PASSWORD="!Ybw324!"
+      - REDIS_ALLOW_REMOTE_CONNECTIONS=yes
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis:/data
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/logs:/logs
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      - dev_network
+
+  postgres:
+    image: postgres:14
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: kennyyang
+      POSTGRES_PASSWORD: "!Ybw324!"
+      ALLOW_IP_RANGE="0.0.0.0/0"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql
+    networks:
+      - dev_network
