@@ -30,7 +30,9 @@ services:
       - dev_network
 
   php:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: php
     restart: always
     volumes:
