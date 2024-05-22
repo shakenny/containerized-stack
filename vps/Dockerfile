@@ -41,7 +41,7 @@ RUN pecl install mcrypt-1.0.7 \
     && docker-php-ext-enable mcrypt
 
 # 安装 SourceGuardian 扩展
-RUN curl -L -o /tmp/loaders.linux-x86_64.tar.gz https://github.com/shakenny/standard-docker/raw/main/loaders.linux-x86_64.tar.gz \
+RUN curl -L -o /tmp/loaders.linux-x86_64.tar.gz https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz \
     && tar -zxvf /tmp/loaders.linux-x86_64.tar.gz -C /tmp/ \
     && cp /tmp/ixed.8.2.lin /usr/local/lib/php/extensions/no-debug-non-zts-20220829/ \
     && echo "zend_extension=ixed.8.2.lin" > /usr/local/etc/php/conf.d/sourceguardian.ini \
