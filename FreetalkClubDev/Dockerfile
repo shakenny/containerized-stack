@@ -40,5 +40,16 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
 RUN pecl install mcrypt-1.0.7 \
     && docker-php-ext-enable mcrypt
 
+# 安装 SourceGuardian 扩展
+RUN curl -L -o /tmp/loaders.linux-x86_64.tar.gz https://github.com/shakenny/standard-docker/raw/main/loaders.linux-x86_64.tar.gz \
+    && tar -zxvf /tmp/loaders.linux-x86_64.tar.gz -C /tmp/ \
+    && cp /tmp/ixed.8.2.lin /usr/local/lib/php/extensions/no-debug-non-zts-20220829/ \
+    && echo "zend_extension=ixed.8.2.lin" > /usr/local/etc/php/conf.d/sourceguardian.ini \
+    && rm /tmp/loaders.linux-x86_64.tar.gz
+
+# 配置 PHP 上传限制和内存限制
+RUN echo "upload_max_filesize=50M\npost_max_size=50M" > /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory.ini
+
 # 清理包缓存和临时文件
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
