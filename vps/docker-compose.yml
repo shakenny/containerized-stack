@@ -19,7 +19,9 @@ services:
       - dev_network
 
   php:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: php
     restart: always
     volumes:
@@ -32,11 +34,12 @@ services:
     container_name: mysql
     restart: always
     ports:
-      - 3306:3306
+      - 9306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/conf.d:/etc/mysql/conf.d/
       - ./mysql/log:/var/log/mysql
+      - ./mysql/conf.d/init.sql:/docker-entrypoint-initdb.d/init.sql
       - /etc/localtime:/etc/localtime:ro
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
@@ -53,7 +56,7 @@ services:
       - REDIS_PASSWORD="!Ybw324!"
       - REDIS_ALLOW_REMOTE_CONNECTIONS=yes
     ports:
-      - 6379:6379
+      - 9379:6379
     volumes:
       - ./redis:/data
       - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
@@ -71,7 +74,7 @@ services:
       POSTGRES_PASSWORD: "!Ybw324!"
       ALLOW_IP_RANGE: "0.0.0.0/0"
     ports:
-      - "5432:5432"
+      - 9332:5432
     volumes:
       - ./postgresql:/var/lib/postgresql
     networks:
