@@ -4,7 +4,7 @@
 cd ~ || exit
 
 # 下载并使脚本可执行
-curl -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
+wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
 chmod +x ~/.auto_cert_renewal.sh
 
 # 设置定时任务字符串
