@@ -17,6 +17,28 @@ mkdir -p /home/web/postgresql
 # 创建默认证书文件
 openssl req -x509 -nodes -newkey rsa:2048 -keyout /home/web/certs/default_server.key -out /home/web/certs/default_server.crt -days 5475 -subj "/C=US/ST=State/L=City/O=Organization/OU=Organizational Unit/CN=Common Name"
 
+# 创建自动续签证书任务
+# 切换到一个一致的目录（例如，家目录）
+cd ~ || exit
+
+# 下载并使脚本可执行
+wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
+chmod +x ~/.auto_cert_renewal.sh
+
+# 设置定时任务字符串
+cron_job="0 0 * * * ~/.auto_cert_renewal.sh"
+
+# 检查是否存在相同的定时任务
+existing_cron=$(crontab -l 2>/dev/null | grep -F "$cron_job")
+
+# 如果不存在，则添加定时任务
+if [ -z "$existing_cron" ]; then
+    (crontab -l 2>/dev/null; echo "$cron_job") | crontab -
+    echo "续签任务已添加"
+else
+    echo "续签任务已存在，无需添加"
+fi
+
 # 下载配置文件
 wget -O /home/web/nginx.conf https://raw.githubusercontent.com/shakenny/standard-docker/main/nginx.conf
 wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/shakenny/standard-docker/main/default.conf
