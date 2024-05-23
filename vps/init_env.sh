@@ -14,6 +14,9 @@ mkdir -p /home/web/mysql/conf.d /home/web/mysql/data /home/web/mysql/log
 mkdir -p /home/web/redis/conf /home/web/redis/data /home/web/redis/logs
 mkdir -p /home/web/postgresql
 
+# 创建默认证书文件
+openssl req -x509 -nodes -newkey rsa:2048 -keyout /home/web/certs/default_server.key -out /home/web/certs/default_server.crt -days 5475 -subj "/C=US/ST=State/L=City/O=Organization/OU=Organizational Unit/CN=Common Name"
+
 # 下载配置文件
 wget -O /home/web/nginx.conf https://raw.githubusercontent.com/shakenny/standard-docker/main/nginx.conf
 wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/shakenny/standard-docker/main/default.conf
