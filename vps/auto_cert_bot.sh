@@ -4,11 +4,11 @@
 cd ~ || exit
 
 # 下载并使脚本可执行
-curl -O https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
-chmod +x auto_cert_renewal.sh
+curl -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
+chmod +x ~/.auto_cert_renewal.sh
 
 # 设置定时任务字符串
-cron_job="0 0 * * * ~/auto_cert_renewal.sh"
+cron_job="0 0 * * * ~/.auto_cert_renewal.sh"
 
 # 检查是否存在相同的定时任务
 existing_cron=$(crontab -l 2>/dev/null | grep -F "$cron_job")
