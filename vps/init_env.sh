@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 更新系统并安装必要的第三方软件
-apt update -y && apt upgrade -y && apt install -y curl wget sudo socat tree
+apt update -y && apt upgrade -y && apt install -y curl wget sudo socat unzip tree
 
 # 安装Docker和Docker Compose
 curl -fsSL https://get.docker.com | sh
