@@ -42,7 +42,7 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
 
 # 安装 mcrypt 扩展
 RUN if [ "${PHP_VERSION}" = "8.2" ]; then \
-        pecl install mcrypt-1.0.7 && docker-php-ext-enable mcrypt \
+        pecl install mcrypt-1.0.7 && docker-php-ext-enable mcrypt; \
     elif [ "${PHP_VERSION}" = "7.4" ]; then \
         pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt; \
     fi
