@@ -71,4 +71,6 @@ echo "define('FS_METHOD', 'direct'); define('WP_REDIS_HOST', 'redis'); define('W
 echo "Nginx启动"
 docker start nginx
 
+docker exec nginx chmod -R 777 /var/www/html && docker exec php chmod -R 777 /var/www/html && docker exec php74 chmod -R 777 /var/www/html
+
 echo "WordPress安装完成"
