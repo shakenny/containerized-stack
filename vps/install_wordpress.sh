@@ -11,6 +11,7 @@ echo -n "       1) php : v$php1_version"
 echo -n "       2) php : v$php2_version"
 echo ""
 echo "---------------------------------------------------"
+read -r -p "请输入域名: " domain_name
 read -r -p "请输入你选择的PHP版本: " choice
 case $choice in
   1)
@@ -30,8 +31,6 @@ case $choice in
     echo "无效选择！！"
     ;;
 esac
-
-read -r -p "请输入域名: " domain_name
 
 # 使用 sed 将域名中的 . 替换为 _，并生成数据库名
 database_name=$(echo "$domain_name" | sed 's/\./_/g')
