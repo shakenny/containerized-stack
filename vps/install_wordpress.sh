@@ -1,13 +1,15 @@
 #!/bin/bash
 
+clear
 # 获取php版本
 php1_version=$(docker exec php php -v 2>/dev/null | grep -oP "PHP \K[0-9]+\.[0-9]+\.[0-9]+")
 php2_version=$(docker exec php74 php -v 2>/dev/null | grep -oP "PHP \K[0-9]+\.[0-9]+\.[0-9]+")
 
-echo "现有PHP信息"
+echo "                现有PHP信息                "
 echo "------------------------------------------"
-echo -n "            php : v$php1_version"
-echo -n "            php : v$php2_version"
+echo -n "       1) php : v$php1_version"
+echo -n "       2) php : v$php2_version"
+echo ""
 echo "------------------------------------------"
 read -r -p "请输入域名: " domain_name
 
