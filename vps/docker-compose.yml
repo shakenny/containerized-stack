@@ -28,7 +28,14 @@ services:
       - ./html:/var/www/html
     networks:
       - dev_network
-
+  
+  php74:
+    image: php:7.4.33-fpm
+    container_name: php74
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+      
   mysql:
     image: mysql:8.0.23
     container_name: mysql
