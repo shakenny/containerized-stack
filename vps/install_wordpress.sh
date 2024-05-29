@@ -70,7 +70,7 @@ rm latest.zip
 insert_commands="define('FS_METHOD', 'direct');\ndefine('WP_REDIS_HOST', 'redis');\ndefine('WP_REDIS_PORT', '6379');"
 
 # 使用 sed 插入命令
-sed -i "/\/\* 在这行和「停止编辑」行之间添加任何自定义值。 \*\//a\\ $insert_commands" "/home/web/html/"${domain_name}"/wordpress/wp-config-sample.php"
+sed -i "/\/\* 在这行和「停止编辑」行之间添加任何自定义值。 \*\//a\\ ${insert_commands}" "/home/web/html/"${domain_name}"/wordpress/wp-config-sample.php"
 
 # 重启Nginx服务器
 echo "Nginx启动"
