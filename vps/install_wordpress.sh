@@ -65,7 +65,12 @@ wget -O latest.zip https://cn.wordpress.org/latest-zh_CN.zip
 unzip latest.zip
 rm latest.zip
 
-echo "define('FS_METHOD', 'direct'); define('WP_REDIS_HOST', 'redis'); define('WP_REDIS_PORT', '6379');" >> /home/web/html/"$domain_name"/wordpress/wp-config-sample.php
+
+# 要插入的命令
+insert_commands="define('FS_METHOD', 'direct');\ndefine('WP_REDIS_HOST', 'redis');\ndefine('WP_REDIS_PORT', '6379');"
+
+# 使用 sed 插入命令
+sed -i "/\/\* 在这行和「停止编辑」行之间添加任何自定义值。 \*\//a\\ $insert_commands" "/home/web/html/"${domain_name}"/wordpress/wp-config-sample.php"
 
 # 重启Nginx服务器
 echo "Nginx启动"
