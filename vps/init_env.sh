@@ -22,7 +22,7 @@ openssl req -x509 -nodes -newkey rsa:2048 -keyout /home/web/certs/default_server
 cd ~ || exit
 
 # 下载并使脚本可执行
-wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal.sh
+wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/shakenny/standard-docker/main/auto_cert_renewal.sh
 chmod +x ~/.auto_cert_renewal.sh
 
 # 设置定时任务字符串
