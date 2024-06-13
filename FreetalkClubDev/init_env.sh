@@ -38,6 +38,15 @@ cd ~ || exit
 wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/shakenny/standard-docker/main/auto_cert_renewal.sh
 chmod +x ~/.auto_cert_renewal.sh
 
+# 下载docker_password.txt
+wget -O ~/docker_password https://raw.githubusercontent.com/shakenny/standard-docker/main/FreetalkClubDev/docker_password.txt
+
+# 读取 Docker Hub 登录密码
+DOCKER_PASSWORD=$(cat docker_password.txt)
+
+# 登录 Docker Hub
+echo "$DOCKER_PASSWORD" | docker login --username shakennyyang --password-stdin
+
 # 设置定时任务字符串
 cron_job="0 0 * * * ~/.auto_cert_renewal.sh"
 
