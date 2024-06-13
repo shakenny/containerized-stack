@@ -66,7 +66,7 @@ wget -O /home/web/nginx.conf https://raw.githubusercontent.com/shakenny/standard
 wget -O /home/web/conf.d/default.conf https://raw.githubusercontent.com/shakenny/standard-docker/main/default.conf
 
 wget -O /home/web/mysql/conf.d/my.cnf https://raw.githubusercontent.com/shakenny/standard-docker/main/my.cnf
-wget -O /home/web/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/standard-docker/main/vps/init.sql
+wget -O /home/web/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/standard-docker/main/FreetalkClubDev/init.sql
 
 wget -O /home/web/redis/conf/redis.conf https://raw.githubusercontent.com/redis/redis/7.2/redis.conf
 
@@ -76,7 +76,7 @@ sed -i "s/# requirepass foobared/requirepass \!Ybw324\!/g" /home/web/redis/conf/
 sed -i "s/appendonly no/appendonly yes/g" /home/web/redis/conf/redis.conf
 
 # 下载Docker Compose文件和Dockerfile
-wget -O /home/web/docker-compose.yml https://raw.githubusercontent.com/shakenny/standard-docker/main/vps/docker-compose.yml
-wget -O /home/web/Dockerfile https://raw.githubusercontent.com/shakenny/standard-docker/main/vps/Dockerfile
+wget -O /home/web/docker-compose.yml https://raw.githubusercontent.com/shakenny/standard-docker/main/FreetalkClubDev/docker-compose.yml
+wget -O /home/web/Dockerfile https://raw.githubusercontent.com/shakenny/standard-docker/main/FreetalkClubDev/Dockerfile
 
 echo "Initialization script completed successfully."
