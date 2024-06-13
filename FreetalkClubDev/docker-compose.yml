@@ -33,8 +33,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PHP_VERSION: "8.2"
     container_name: php
     restart: always
+    volumes:
+      - ./html:/var/www/html
+    networks:
+      - dev_network
+  
+  php74:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PHP_VERSION: "7.4"
+    container_name: php74
     volumes:
       - ./html:/var/www/html
     networks:
