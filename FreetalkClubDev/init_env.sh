@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# 更新国内镜像源
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup  # 备份原有的 sources.list 文件
+sudo cat > /etc/apt/sources.list <<EOF
+deb https://mirrors.aliyun.com/debian/ bookworm main non-free non-free-firmware contrib
+deb-src https://mirrors.aliyun.com/debian/ bookworm main non-free non-free-firmware contrib
+deb https://mirrors.aliyun.com/debian-security/ bookworm-security main
+deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main
+deb https://mirrors.aliyun.com/debian/ bookworm-updates main non-free non-free-firmware contrib
+deb-src https://mirrors.aliyun.com/debian/ bookworm-updates main non-free non-free-firmware contrib
+deb https://mirrors.aliyun.com/debian/ bookworm-backports main non-free non-free-firmware contrib
+deb-src https://mirrors.aliyun.com/debian/ bookworm-backports main non-free non-free-firmware contrib
+EOF
+
 # 更新系统并安装必要的第三方软件
 apt update -y && apt upgrade -y && apt install -y curl wget sudo socat unzip tree
 
