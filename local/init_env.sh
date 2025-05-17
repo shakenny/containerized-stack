@@ -66,7 +66,7 @@ wget -O /home/app/nginx.conf https://raw.githubusercontent.com/shakenny/containe
 wget -O /home/app/conf.d/default.conf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/default.conf
 
 wget -O /home/app/mysql/conf.d/my.cnf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/my.cnf
-wget -O /home/app/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/containerized-stack/main/local/init.sql
+wget -O /home/app/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/init.sql
 
 wget -O /home/app/redis/conf/redis.conf https://raw.githubusercontent.com/redis/redis/7.2/redis.conf
 
@@ -76,7 +76,7 @@ sed -i "s/# requirepass foobared/requirepass \!Ybw324\!/g" /home/app/redis/conf/
 sed -i "s/appendonly no/appendonly yes/g" /home/app/redis/conf/redis.conf
 
 # 下载Docker Compose文件和Dockerfile
-wget -O /home/app/docker-compose.yml https://raw.githubusercontent.com/shakenny/containerized-stack/main/local/docker-compose.yml
-wget -O /home/app/Dockerfile https://raw.githubusercontent.com/shakenny/containerized-stack/main/local/Dockerfile
+wget -O /home/app/docker-compose.yml https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/docker-compose.yml
+wget -O /home/app/Dockerfile https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile
 
 echo "Initialization script completed successfully."
