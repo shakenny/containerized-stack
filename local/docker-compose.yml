@@ -1,5 +1,5 @@
 networks:
-  dev_network:
+  docker_network1:
     driver: bridge
 
 services:
@@ -27,7 +27,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/var/www/html
     networks:
-      - dev_network
+      - docker_network1
 
   php:
     build:
@@ -40,7 +40,7 @@ services:
     volumes:
       - ./html:/var/www/html
     networks:
-      - dev_network
+      - docker_network1
   
   php74:
     build:
@@ -52,7 +52,7 @@ services:
     volumes:
       - ./html:/var/www/html
     networks:
-      - dev_network
+      - docker_network1
 
   mysql:
     image: mysql:8.0.23
@@ -71,7 +71,7 @@ services:
       - MYSQL_USER=kennyyang
       - MYSQL_PASSWORD="!Ybw324!"
     networks:
-      - dev_network
+      - docker_network1
 
   redis:
     image: redis:latest
@@ -88,7 +88,7 @@ services:
       - ./redis/logs:/logs
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     networks:
-      - dev_network
+      - docker_network1
 
   postgres:
     image: postgres:14
@@ -103,4 +103,4 @@ services:
     volumes:
       - ./postgresql:/var/lib/postgresql
     networks:
-      - dev_network
+      - docker_network1

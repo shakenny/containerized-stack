@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义证书存储目录
-certs_directory="/home/web/certs/"
+certs_directory="/home/app/certs/"
 days_before_expiry=5  # 设置在证书到期前几天触发续签
 
 # 遍历所有证书文件
