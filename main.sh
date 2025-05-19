@@ -1,0 +1,1 @@
+bash <(curl -sSL https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/init_env.sh)
