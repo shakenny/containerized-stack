@@ -3,3 +3,6 @@ wget -O ~/.init_env.sh https://raw.githubusercontent.com/shakenny/containerized-
 chmod +x ~/.init_env.sh
 
 ~/.init_env.sh
+
+cd /home/app
+docker compose up -d
