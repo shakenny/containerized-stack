@@ -39,7 +39,7 @@ wget -O ~/.auto_cert_renewal.sh https://raw.githubusercontent.com/shakenny/conta
 chmod +x ~/.auto_cert_renewal.sh
 
 # 下载docker_password.txt
-wget -O ~/docker_password https://raw.githubusercontent.com/shakenny/containerized-stack/main/local/docker_password.txt
+wget -O ~/docker_password.txt https://raw.githubusercontent.com/shakenny/containerized-stack/main/local/docker_password.txt
 
 # 读取 Docker Hub 登录密码
 DOCKER_PASSWORD=$(cat docker_password.txt)
