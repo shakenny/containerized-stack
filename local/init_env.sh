@@ -79,6 +79,7 @@ sed -i "s/appendonly no/appendonly yes/g" /home/app/redis/conf/redis.conf
 
 # 下载Docker Compose文件和Dockerfile
 wget -O /home/app/docker-compose.yml https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/docker-compose.yml
-wget -O /home/app/Dockerfile https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile
+wget -O /home/app/Dockerfile https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile.php
+wget -O /home/app/Dockerfile https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile.postgres
 
 echo "Initialization script completed successfully."
