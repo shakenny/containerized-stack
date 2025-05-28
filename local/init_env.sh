@@ -66,9 +66,11 @@ wget -O /home/app/nginx.conf https://raw.githubusercontent.com/shakenny/containe
 wget -O /home/app/conf.d/default.conf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/default.conf
 
 wget -O /home/app/mysql/conf.d/my.cnf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/my.cnf
-wget -O /home/app/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/init.sql
+wget -O /home/app/mysql/conf.d/init.sql https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/init_mysql.sql
 
 wget -O /home/app/redis/conf/redis.conf https://raw.githubusercontent.com/redis/redis/7.2/redis.conf
+
+wget -O /home/app/postgresql/init.sql https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/init_postgres.sql
 
 # 修改Redis配置文件
 sed -i "s/bind 127.0.0.1 -::1/bind 0.0.0.0/g" /home/app/redis/conf/redis.conf
