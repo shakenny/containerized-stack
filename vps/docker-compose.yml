@@ -21,7 +21,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.php
       args:
         PHP_VERSION: "8.2"
     container_name: php
@@ -34,7 +34,7 @@ services:
   php74:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.php
       args:
         PHP_VERSION: "7.4"
     container_name: php74
@@ -80,7 +80,9 @@ services:
       - docker_network1
 
   postgres:
-    image: postgres:14
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
     container_name: postgresql
     restart: always
     environment:
@@ -90,6 +92,7 @@ services:
     ports:
       - 9332:5432
     volumes:
-      - ./postgresql:/var/lib/postgresql
+      - ./postgresql/data:/var/lib/postgresql/data
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - docker_network1

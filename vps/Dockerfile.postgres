@@ -1,0 +1,26 @@
+# /home/app/Dockerfile.postgres
+FROM postgres:14
+
+# 安装构建工具
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    postgresql-server-dev-14 \
+    git \
+    ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+# 编译安装 pgvector
+RUN cd /tmp && \
+    git clone --branch v0.6.2 https://github.com/pgvector/pgvector.git && \
+    cd pgvector && \
+    make && \
+    make install && \
+    rm -rf /tmp/pgvector
+
+# 清理构建工具
+RUN apt-get purge -y --auto-remove \
+    build-essential \
+    postgresql-server-dev-14 \
+    git && \
+    rm -rf /var/cache/apt/archives
