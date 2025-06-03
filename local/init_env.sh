@@ -82,4 +82,8 @@ wget -O /home/app/docker-compose.yml https://raw.githubusercontent.com/shakenny/
 wget -O /home/app/Dockerfile.php https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile.php
 wget -O /home/app/Dockerfile.postgres https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/Dockerfile.postgres
 
+# 下载为APP应用反代证书签发脚本
+wget -O /home/app/add_new_app.sh https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/local/add_new_app.sh
+chmod +x /home/app/add_new_app.sh
+
 echo "Initialization script completed successfully."
