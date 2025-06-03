@@ -1,11 +1,11 @@
 #!/bin/bash
 
 read -r -p "请输入域名: " domain_name
-read -r -p "请输入代理IP地址: " ip_address
-read -r -p "请输入代理端口: " port
+read -r -p "请输入反代理IP地址: " ip_address
+read -r -p "请输入反代理端口: " port
 
 # 设置Cloudflare API环境变量
-export CF_Token="wCZ-IdP8zY-Gdf5e3ZMGkeys_DeSiBQq2z0_SN2Y"  # 替换为刚生成的API令牌
+export CF_Token="XHLDcOHln93Fppeav63Z-DMujjU1o3gZtJ8FMnF3"  # 替换为刚生成的API令牌
 export CF_Account_ID="ybwpcl@hotmail.com"  # 在Cloudflare控制台首页右侧获取
 
 # 安装acme.sh（必须先安装）
