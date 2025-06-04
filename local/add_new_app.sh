@@ -36,7 +36,7 @@ echo "当前定时任务："
 crontab -l | grep acme
 
 echo "配置反向代理配置文件..."
-wget -O /home/web/conf.d/"$domain_name".conf https://raw.githubusercontent.com/kejilion/nginx/main/reverse-proxy-template.conf
+wget -O /home/web/conf.d/"$domain_name".conf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/reverse-proxy-template.conf
 sed -i "s/yuming.com/$domain_name/g" /home/web/conf.d/"$domain_name".conf
 sed -i "s/0.0.0.0/$ip_address/g" /home/web/conf.d/"$domain_name".conf
 sed -i "s/0000/$port/g" /home/web/conf.d/"$domain_name".conf
