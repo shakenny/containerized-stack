@@ -20,7 +20,7 @@ echo "正在注册账户..."
 
 # 使用DNS验证申请证书（关键步骤）
 echo "正在使用DNS验证签发证书..."
-~/.acme.sh/acme.sh --issue --dns dns_cf -d "$domain_name" --keylength ec-256  # ECC证书更高效
+~/.acme.sh/acme.sh --issue --dns dns_cf -d "$domain_name" --keylength ec-256 # ECC证书更高效
 
 # 安装证书到指定位置
 echo "正在安装证书..."
@@ -36,7 +36,7 @@ echo "当前定时任务："
 crontab -l | grep acme
 
 echo "配置反向代理配置文件..."
-wget -O /home/web/conf.d/"$domain_name".conf https://raw.githubusercontent.com/kejilion/nginx/main/reverse-proxy.conf
+wget -O /home/web/conf.d/"$domain_name".conf https://raw.githubusercontent.com/kejilion/nginx/main/reverse-proxy-template.conf
 sed -i "s/yuming.com/$domain_name/g" /home/web/conf.d/"$domain_name".conf
 sed -i "s/0.0.0.0/$ip_address/g" /home/web/conf.d/"$domain_name".conf
 sed -i "s/0000/$port/g" /home/web/conf.d/"$domain_name".conf
