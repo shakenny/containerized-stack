@@ -5,8 +5,9 @@ read -r -p "请输入反代理IP地址: " ip_address
 read -r -p "请输入反代理端口: " port
 
 # 设置Cloudflare API环境变量
-export CF_Token="XHLDcOHln93Fppeav63Z-DMujjU1o3gZtJ8FMnF3"  # 替换为刚生成的API令牌
-export CF_Account_ID="ybwpcl@hotmail.com"  # 在Cloudflare控制台首页右侧获取
+export CF_Token="NXCgZOt0DDuYdQ59ehyeR-wPFffxIotr1qO2oqSv"  
+export CF_Account_ID="3b1306fed3472419f830e0cf96cb85ce"  
+source ~/.bashrc
 
 # 安装acme.sh（必须先安装）
 echo "正在安装 acme.sh 脚本..."
