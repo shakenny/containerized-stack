@@ -24,7 +24,7 @@ echo "正在使用DNS验证签发证书..."
 
 # 安装证书到指定位置
 echo "正在安装证书..."
-~/.acme.sh/acme.sh --installcert -d "$domain_name" --key-file /home/web/certs/"${domain_name}"_key.pem --fullchain-file /home/web/certs/"${domain_name}"_cert.pem
+~/.acme.sh/acme.sh --installcert -d "$domain_name" --key-file /home/app/certs/"${domain_name}"_key.pem --fullchain-file /home/app/certs/"${domain_name}"_cert.pem
 echo "证书签发安装操作完成。"
 
 # 关键改进2：安装自动续期任务
@@ -36,8 +36,8 @@ echo "当前定时任务："
 crontab -l | grep acme
 
 echo "配置反向代理配置文件..."
-wget -O /home/web/conf.d/"$domain_name".conf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/reverse-proxy-template.conf
-sed -i "s/yuming.com/$domain_name/g" /home/web/conf.d/"$domain_name".conf
-sed -i "s/0.0.0.0/$ip_address/g" /home/web/conf.d/"$domain_name".conf
-sed -i "s/0000/$port/g" /home/web/conf.d/"$domain_name".conf
+wget -O /home/app/conf.d/"$domain_name".conf https://raw.githubusercontent.com/shakenny/containerized-stack/refs/heads/main/reverse-proxy-template.conf
+sed -i "s/yuming.com/$domain_name/g" /home/app/conf.d/"$domain_name".conf
+sed -i "s/0.0.0.0/$ip_address/g" /home/app/conf.d/"$domain_name".conf
+sed -i "s/0000/$port/g" /home/app/conf.d/"$domain_name".conf
 echo "配置完成"
